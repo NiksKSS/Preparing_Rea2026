@@ -141,3 +141,21 @@ with open(wav_path, "rb") as f:
 
 print("Status:", response.status_code)
 print("Response:", response.json())
+
+
+# -----------------------------
+# 8) Тест инференса геомодели
+# -----------------------------
+url = "http://127.0.0.1:8002/geo_inference"
+
+# Параметры передаются через query string (?CO=...&NO2=...)
+params = {
+    "Amz2": 25.3,
+    "H2": 15.5,
+    "D2": 12.1,
+    "Skal2": 0.0,
+    "Tur1h2": 10.0,
+}
+
+response = requests.get(url, params=params)
+print("Response:", response.text)
